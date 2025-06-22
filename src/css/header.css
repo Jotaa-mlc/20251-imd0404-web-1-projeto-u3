@@ -1,0 +1,92 @@
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #205781;
+  padding: 10px 30px;
+}
+
+header .navbar-brand img {
+  width: 40px;
+  height: auto;
+}
+
+header .navbar-nav {
+  display: flex;
+  flex-direction: row;
+  gap: .5em;
+  align-items: center;
+}
+
+header .nav-link {
+  color: #ffa500;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+header .nav-link:hover {
+  color: #d68500;
+}
+
+header .nav-link.active {
+  color: #ffa500;
+}
+
+header .dropdown-menu {
+  background-color: #205781;
+}
+
+header .dropdown-item a{
+  color: #ffa500;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease, color 0.3s ease
+}
+
+header .dropdown-item:hover {
+  background-color: #1a4563;
+  color: #d68500;
+  transition: color 0.3s ease;
+}
+
+header .login-register a {
+  margin-left: .5em;
+}
+
+header .left-container {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+header .left-container a {
+  color: #ffa500;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+header .left-container a:hover {
+  color: #d68500;
+}
+
+header .user-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: .5em;
+}
+
+header .user-name {
+  color: whitesmoke;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: .5em;
+}
+
+

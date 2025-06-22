@@ -1,0 +1,60 @@
+.spikebox {
+    z-index: 0;
+}
+
+.spikebox {
+    width: 100%;
+    z-index: 0;
+    filter: drop-shadow(0px 5px 5px #000);
+    position: relative;
+    margin-top: auto;
+}
+
+.spikes {
+    background-repeat: repeat-x;
+    background-size: 50px;
+    width: 100%;
+    height: 50px;
+    z-index: 1;
+}
+
+.over {
+    background-image: url("../assets/img/spikeoverpattern.png");
+}
+
+.footer-container {
+    color: white;
+    background-color: #205781;
+    height: 120px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.footer-container p {
+    margin: 0;
+    font-size: 0.9rem;
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.footer-container nav {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.footer-container nav a {
+    color: #ffa500;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-container nav a:hover {
+    color: #d68500;
+}
