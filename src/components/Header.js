@@ -17,17 +17,17 @@ function logedIn(user) {
                 <img className="user-img" alt="User Image" src={user.image ? user.image : 'https://placehold.co/40x40/png?text=User'}/>
                 <span className="user-name">{user.name}</span>
             </a>
-            <div class="dropdown">
-                <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <div className="dropdown">
+                <button className="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     <svg fill="white" viewBox="0 0 24 24" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
                     </svg>
                 </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="my-products">Meus Produtos</a></li>
-                    <li><a class="dropdown-item" href="profile">Meu Perfil</a></li>
-                    <li><hr class="dropdown-divider"/></li>
-                    <li><a class="dropdown-item" href="#" id="logoutButtonHeader" onclick="logout()">Sair</a></li>
+                <ul className="dropdown-menu">
+                    <li><a className="dropdown-item" href="my-products">Meus Produtos</a></li>
+                    <li><a className="dropdown-item" href="profile">Meu Perfil</a></li>
+                    <li><hr className="dropdown-divider"/></li>
+                    <li><a className="dropdown-item" href="#" id="logoutButtonHeader" onClick="logout()">Sair</a></li>
                 </ul>
             </div>
         </>

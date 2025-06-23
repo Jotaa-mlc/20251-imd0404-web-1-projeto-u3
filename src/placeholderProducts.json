@@ -1,0 +1,169 @@
+{
+  "products": [
+  {
+  "id": 1,
+  "name": "Cadeira Gamer",
+  "description": "Confortável e ergonômica",
+  "price": 500,
+  "category": "moveis",
+  "creator": "Admin",
+  "image": "https://placehold.co/150x150/png?text=Cadeira+Gamer",
+  "quantity": 1,
+  "condition": "novo"
+  },
+  {
+  "id": 2,
+  "name": "Smart TV 55\"",
+  "description": "4K, Smart TV com Netflix e YouTube",
+  "price": 2000,
+  "category": "eletronicos",
+  "creator": "Admin",
+  "image": "https://placehold.co/150x150/png?text=Smart+TV",
+  "quantity": 1,
+  "condition": "novo"
+  },
+  {
+  "id": 3,
+  "name": "Tênis Nike Air Max",
+  "description": "Tamanho 42, pouco usado",
+  "price": 400,
+  "category": "esportes",
+  "creator": "Admin",
+  "image": "https://placehold.co/150x150/png?text=T%C3%AAnis+Nike",
+  "quantity": 2,
+  "condition": "novo"
+  },
+  {
+  "id": 4,
+  "name": "Livro - Aprenda JavaScript",
+  "description": "Edição atualizada, ideal para iniciantes",
+  "price": 60,
+  "category": "livros",
+  "creator": "Admin",
+  "image": "https://placehold.co/150x150/png?text=Livro+JavaScript",
+  "quantity": 5,
+  "condition": "novo"
+  },
+  {
+  "id": 5,
+  "name": "Notebook Usado",
+  "description": "Em bom estado, com alguns arranhões",
+  "price": 800,
+  "category": "eletronicos",
+  "creator": "Admin",
+  "image": "https://placehold.co/150x150/png?text=Notebook",
+  "quantity": 1,
+  "condition": "usado"
+  },
+  {
+  "id": 6,
+  "name": "Mesa de Escritório",
+  "description": "Madeira maciça, ótima para home office",
+  "price": 300,
+  "category": "moveis",
+  "creator": "Admin",
+  "image": "https://placehold.co/150x150/png?text=Mesa",
+  "quantity": 1,
+  "condition": "usado"
+  },
+  {
+  "id": 7,
+  "name": "Jaqueta de Couro",
+  "description": "Tamanho G, estilo clássico",
+  "price": 200,
+  "category": "roupas",
+  "creator": "Admin",
+  "image": "https://placehold.co/150x150/png?text=Jaqueta",
+  "quantity": 2,
+  "condition": "usado"
+  },
+  {
+  "id": 8,
+  "name": "Livro - Programação Avançada",
+  "description": "Conteúdo atualizado, ideal para desenvolvedores",
+  "price": 50,
+  "category": "livros",
+  "creator": "Admin",
+  "image": "https://placehold.co/150x150/png?text=Livro+Programação",
+  "quantity": 3,
+  "condition": "usado"
+  },
+  {
+  "id": 9,
+  "name": "Bicicleta Usada",
+  "description": "Em bom estado, com pneus novos",
+  "price": 400,
+  "category": "esportes",
+  "creator": "Admin",
+  "image": "https://placehold.co/150x150/png?text=Bicicleta",
+  "quantity": 1,
+  "condition": "usado"
+  },
+  {
+  "id": 10,
+  "name": "Smartphone Usado",
+  "description": "Modelo antigo, mas funcionando",
+  "price": 250,
+  "category": "eletronicos",
+  "creator": "Admin",
+  "image": "https://placehold.co/150x150/png?text=Smartphone",
+  "quantity": 1,
+  "condition": "usado"
+  },
+  {
+  "id": 11,
+  "name": "Cadeira de Madeira",
+  "description": "Bem conservada",
+  "price": 150,
+  "category": "moveis",
+  "creator": "Admin",
+  "image": "https://placehold.co/150x150/png?text=Cadeira",
+  "quantity": 2,
+  "condition": "usado"
+  },
+  {
+  "id": 12,
+  "name": "Camisa Azul",
+  "description": "Tamanho M, pouco usada",
+  "price": 40,
+  "category": "roupas",
+  "creator": "Admin",
+  "image": "https://placehold.co/150x150/png?text=Camisa",
+  "quantity": 3,
+  "condition": "usado"
+  },
+  {
+  "id": 13,
+  "name": "Livro - Aventura",
+  "description": "Leitura envolvente",
+  "price": 30,
+  "category": "livros",
+  "creator": "Admin",
+  "image": "https://placehold.co/150x150/png?text=Livro",
+  "quantity": 5,
+  "condition": "usado"
+  },
+  {
+  "id": 14,
+  "name": "Tênis de Corrida",
+  "description": "Quase novo",
+  "price": 120,
+  "category": "esportes",
+  "creator": "Admin",
+  "image": "https://placehold.co/150x150/png?text=T%C3%AAnis",
+  "quantity": 1,
+  "condition": "usado"
+  },
+  {
+  "id": 15,
+  "name": "Fone de Ouvido",
+  "description": "Bom estado",
+  "price": 70,
+  "category": "eletronicos",
+  "creator": "Admin",
+  "image": "https://placehold.co/150x150/png?text=Fone",
+  "quantity": 4,
+  "condition": "usado"
+  }
+  ]
+}

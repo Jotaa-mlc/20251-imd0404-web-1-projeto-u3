@@ -1,15 +1,18 @@
 import "./../css/home.css";
+import Product from "../model/Product";
 import ProductCard from "../components/ProductCard";
+import ProductService from "../service/ProductService";
+import React, { useRef, useEffect, useState } from 'react';
 
 function HomeGreeting() {
   return (
     <div className="home-container">
-        <div class="home-content">
+        <div className="home-content">
             <h1 id="greeting">Bem-vindo ao Usados+</h1>
             <p>Compre e venda produtos usados com facilidade!</p>
-            <form class="searchbar d-flex" role="search" id="searchForm" onsubmit="return false;">
-                <input class="form-control me-2" type="search" id="searchInput" placeholder="Pesquisar produtos..." aria-label="Search"/>
-                <button class="btn" type="submit">Buscar</button>
+            <form className="searchbar d-flex" role="search" id="searchForm" onsubmit="return false;">
+                <input className="form-control me-2" type="search" id="searchInput" placeholder="Pesquisar produtos..." aria-label="Search"/>
+                <button className="btn" type="submit">Buscar</button>
             </form>
         </div>
     </div>
@@ -17,83 +20,49 @@ function HomeGreeting() {
 }
 
 function Home() {
-    const placeholderProducts = [
-        {
-          name: "Smartphone Usado",
-          description: "Modelo antigo, mas funcionando",
-          price: 250,
-          category: "eletronicos",
-          creator: "Admin",
-          image: "https://placehold.co/150x150/png?text=Smartphone",
-          quantity: 1,
-          type: "Venda",
-          condition: "usado"
-        },
-        {
-          name: "Cadeira de Madeira",
-          description: "Bem conservada",
-          price: 150,
-          category: "moveis",
-          creator: "Admin",
-          image: "https://placehold.co/150x150/png?text=Cadeira",
-          quantity: 2,
-          type: "Venda",
-          condition: "usado"
-        },
-        {
-          name: "Camisa Azul",
-          description: "Tamanho M, pouco usada",
-          price: 40,
-          category: "roupas",
-          creator: "Admin",
-          image: "https://placehold.co/150x150/png?text=Camisa",
-          quantity: 3,
-          type: "Venda",
-          condition: "usado"
-        },
-        {
-          name: "Livro - Aventura",
-          description: "Leitura envolvente",
-          price: 30,
-          category: "livros",
-          creator: "Admin",
-          image: "https://placehold.co/150x150/png?text=Livro",
-          quantity: 5,
-          type: "Venda",
-          condition: "usado"
-        },
-        {
-          name: "Tênis de Corrida",
-          description: "Quase novo",
-          price: 120,
-          category: "esportes",
-          creator: "Admin",
-          image: "https://placehold.co/150x150/png?text=T%C3%AAnis",
-          quantity: 1,
-          type: "Venda",
-          condition: "usado"
-        },
-        {
-          name: "Fone de Ouvido",
-          description: "Bom estado",
-          price: 70,
-          category: "eletronicos",
-          creator: "Admin",
-          image: "https://placehold.co/150x150/png?text=Fone",
-          quantity: 4,
-          type: "Venda",
-          condition: "usado"
-        }
-    ];
+  const [products, setProducts] = useState([]);
+  const [productsByCat, setProductsByCat] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    const produtosPorCategoria = placeholderProducts.reduce((acc, produto) => {
-        const categoria = produto.category || "Outros";
-        if (!acc[categoria]) {
-            acc[categoria] = [];
-        }
-        acc[categoria].push(produto);
-        return acc;
-    }, {});
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const productList = await ProductService.getAllProducts();
+        setProducts(productList);
+        const productByCat = {};
+        productList.forEach(product => {
+          const cat = product.category || "Outros";
+          if (!productByCat[cat]) productByCat[cat] = [];
+          productByCat[cat].push(product);
+        });
+        setProductsByCat(productByCat);
+      } catch (err) {
+        setError(err.message);
+        console.error("Erro no componente Home:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (loading) {
+    return (
+      <div>Carregando produtos...</div>
+    );
+  }
+
+  if (error) {
+    return <div>Erro ao carregar produtos: {error}</div>;
+  }
+
+  if (products.length === 0) {
+    return <div>Nenhum produto encontrado.</div>;
+  }
+
+
 
   return (
     <>  
@@ -102,16 +71,16 @@ function Home() {
             <div className="home-products">
                 <h2>Produtos Disponíveis</h2>
                 <div className="product-grid">
-                    {Object.keys(produtosPorCategoria).map(categoria => (
-                        <div key={categoria} className="product-category">
-                            <h3>{categoria.charAt(0).toUpperCase() + categoria.slice(1)}</h3>
-                            <div className="product-list">
-                                {produtosPorCategoria[categoria].map((produto, index) => (
-                                    <ProductCard key={index} product={produto} />
-                                ))}
-                            </div>
-                        </div>
-                    ))}
+                    {Object.keys(productsByCat).map(categoria => (
+                      <div key={categoria} className="product-category">
+                          <h3>{categoria.charAt(0).toUpperCase() + categoria.slice(1)}</h3>
+                          <div className="product-list">
+                              {productsByCat[categoria].map( produto => (
+                                  <ProductCard key={produto.id} product={produto} />
+                              ))}
+                          </div>
+                      </div>
+                      ))}
                 </div>
             </div>
         </div>
