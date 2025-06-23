@@ -1,5 +1,14 @@
 import Header from './components/Header';
 import Home from './pages/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Profile from './pages/Profile';
+import MyProducts from './pages/MyProducts';
+import NewProduct from './pages/NewProduct';
+import Cart from './pages/Cart';
+import NotFound from './pages/NotFound';
 import Footer from './components/Footer';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from 'react-router-dom';
@@ -9,18 +18,20 @@ import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from 'rea
 function App() {
   return (
     <>
-      <Header isLogedin={false} user={{image:"", name: "João Artur"}}/>
+      <Header isLogedin={true} user={{image:"", name: "João Artur"}}/>
       
-
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<div>Sobre</div>} />
-          <Route path="/contact" element={<div>Contato</div>} />
-          <Route path="/login" element={<div>Login</div>} />
-          <Route path="/register" element={<div>Registrar</div>} />
-          <Route path="/profile" element={<div>Meu Perfil</div>} />
-          <Route path="/my-products" element={<div>Meus Produtos</div>} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/my-products" element={<MyProducts />} />
+          <Route path="/new-product" element={<NewProduct />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
       <Footer />

@@ -1,0 +1,114 @@
+#my-products-page {
+    flex: 1;
+    margin-top: 120px;
+    display: flex;
+    flex-direction: row;
+}
+
+#my-products-page .side-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 10px;
+    min-width: 170px;
+    height: fit-content;
+    border: solid 1px #CFD4DD;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px 1px rgba(145, 145, 145, 0.568);
+}
+
+#my-products-page .side-menu h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 5px auto;
+    width: 100%;
+    text-align: center;
+    color: #205781;
+    border-bottom: solid 1px #CFD4DD;
+}
+
+#my-products-page .side-menu ul{
+    padding-inline-start: 0px;
+    list-style: none;
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+}
+
+#my-products-page .side-menu li {
+    margin: 10px 0;
+    padding: 5px 0;
+    width: fit-content;
+    border-bottom: solid 1px #CFD4DD;
+}
+
+#my-products-page .side-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+#my-products-page .side-menu a:hover {
+    color: #ffa500;
+}
+
+#my-products-page .side-menu a.active {
+    color: #ffa500;
+    font-weight: bold;
+}
+
+#my-products-page .my-products-container {
+    margin: 10px 30px;
+    width: 100%;
+    max-width: none;
+    padding: 10px 30px;
+}
+
+#my-products-page .sub-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px;
+    border-bottom: solid 1px #CFD4DD;
+}
+
+#my-products-page .sub-header h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 5px 0px;
+    color: #205781;
+}
+
+#my-products-page .sub-header img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+} 
+
+#my-products-page .sub-header a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+#my-products-page .add-product {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    #my-products-page {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #my-products-page .side-menu {
+        display: none;
+    }
+
+    #my-products-page .my-products-container {
+        width: 90%;
+    }
+    
+}

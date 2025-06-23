@@ -1,0 +1,64 @@
+.register-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-image: url(../assets/img/fundo-login-screen.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: blur(15px);
+}
+
+#register-container {
+    height: 100%;
+    width: 100%;
+    max-width: 400px;
+    margin: 160px auto 0px auto;
+    
+}
+
+#register-page {
+    width: 100%;
+    min-height: 500px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    border-radius: 12px;
+}
+
+#register-page form {
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 15px;
+}
+
+#register-page input[type="email"],
+#register-page input[type="text"],
+#register-page input[type="number"],
+#register-page input[type="password"] {
+    width: 320px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    display: block;
+}
+
+#register-page .btn {
+    background-color: #205781;
+}
+
+#register-page .btn:hover {
+    background-color: #1a4563;
+}

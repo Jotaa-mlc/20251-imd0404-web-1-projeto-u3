@@ -1,5 +1,4 @@
 import "./../css/home.css";
-
 import ProductCard from "../components/ProductCard";
 
 function HomeGreeting() {

@@ -6,6 +6,7 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
+  height: 100px;
   background-color: #205781;
   padding: 10px 30px;
 }
@@ -89,4 +90,14 @@ header .user-name {
   margin-left: .5em;
 }
 
+header .user-profile-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
 
+@media (max-width: 730px) {
+    header .user-profile-link {
+      display: none;
+    }
+}

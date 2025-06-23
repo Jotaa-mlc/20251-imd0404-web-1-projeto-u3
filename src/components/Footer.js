@@ -7,7 +7,7 @@ function Footer() {
         <div className="spikebox">
             <div className="spikes over"></div>
             <div className="footer-container" >
-                <p>&copy; 2025 Usados+ - Todos os direitos reservados.</p>
+                <p>&copy; 2025 Usados+ | Todos os direitos reservados.</p>
                 <p>Compra e venda de produtos usados com segurança e praticidade.</p>
                 <nav>
                     <a href="/about">Sobre</a>

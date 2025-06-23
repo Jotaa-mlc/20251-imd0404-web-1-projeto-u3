@@ -1,0 +1,50 @@
+#about-us-page {
+    width: 100%;
+    padding: 20px;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    flex: 1;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    color: #163f5f;
+}
+
+#about-us-page h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    color: #d68500;
+}
+
+#about-us-page h2 {
+    margin-top: 30px;
+    color: #1e4f70;
+    font-size: 1.4em;
+    border-bottom: 2px solid #d68500;
+    display: inline-block;
+    padding-bottom: 5px;
+    padding-left: 30px;
+}
+
+#about-us-page p {
+    padding: 10px;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+#about-us-page a {
+    color: #d68500;
+    text-decoration: none;
+}
+
+#description {
+    margin: 20px auto;
+    padding: 20px;
+    width: fit-content;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
