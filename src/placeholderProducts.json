@@ -165,5 +165,24 @@
   "quantity": 4,
   "condition": "usado"
   }
+  ],
+
+  "users" : [
+    {
+      "name":"Teste 1",
+      "email": "teste1@mail.com",
+      "phoneNumber":"",
+      "password":"123",
+      "address":"",
+      "profilePicture":"https://placehold.co/150x150/png?text=Teste1"
+    },
+    {
+      "name":"Teste 2",
+      "email": "teste2@mail.com",
+      "phoneNumber":"",
+      "password":"456",
+      "address":"",
+      "profilePicture":"https://placehold.co/150x150/png?text=Teste2"
+    }
   ]
 }

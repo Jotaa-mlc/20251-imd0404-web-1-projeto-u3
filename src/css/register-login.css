@@ -12,20 +12,18 @@
     filter: blur(15px);
 }
 
-#register-container {
+#register-page {
     height: 100%;
     width: 100%;
-    max-width: 400px;
     margin: 160px auto 0px auto;
-    
 }
 
-#register-page {
-    width: 100%;
+#register-container {
+    width: fit-content;
+    height: fit-content;
     min-height: 500px;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.8);
-    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-self: center;
@@ -61,4 +59,9 @@
 
 #register-page .btn:hover {
     background-color: #1a4563;
+}
+
+.input-container {
+    display: flex;
+    gap: 20px;
 }

@@ -1,6 +1,4 @@
 function ProductCard({product}) {
-  
-
   return (
     <div className="product-card">
       <img className="product-img" src={product.image} alt={product.name} />

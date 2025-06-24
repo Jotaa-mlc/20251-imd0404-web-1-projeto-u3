@@ -10,6 +10,7 @@ import NewProduct from './pages/NewProduct';
 import Cart from './pages/Cart';
 import NotFound from './pages/NotFound';
 import Footer from './components/Footer';
+import { Authentication } from './service/Authentication';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from 'react-router-dom';
 
@@ -18,7 +19,7 @@ import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from 'rea
 function App() {
   return (
     <>
-      <Header isLogedin={false} user={{image:"", name: "João Artur"}}/>
+      <Header isLogedin={Authentication.isAuthenticated()} />
       
       <BrowserRouter>
         <Routes>
