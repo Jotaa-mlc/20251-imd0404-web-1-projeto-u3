@@ -1,6 +1,7 @@
 import User from '../model/User';
 import { rtdb } from '../firebase';
-import { ref, get, set, child } from 'firebase/database';
+import { ref, get, set, child, update, remove } from 'firebase/database';
+import { Authentication } from './Authentication';
 
 
 
@@ -56,6 +57,34 @@ export default class UserService {
         } catch (error) {
             console.error("Erro ao adicionar usuário:", error);
             throw new Error("Não foi possível adicionar o usuário. Verifique sua conexão e as regras do Firebase.");
+        }
+    }
+
+    static async updateUser(user) {
+        try {
+            const dbRef = ref(rtdb, 'users');
+            const UserKey = user.email.replace(/\./g, '_');
+            const UserRef = child(dbRef, UserKey);
+            await update(UserRef, user);
+            Authentication.setLocalUser(user);
+            console.log("Usuário atualizado com sucesso:", user);
+        } catch (error) {
+            console.error("Erro ao atualizar usuário:", error);
+            throw new Error("Não foi possível atualizar o usuário. Verifique sua conexão e as regras do Firebase.");
+        }
+    }
+
+    static async deleteUser(user) {
+        try {
+            const dbRef = ref(rtdb, 'users');
+            const UserKey = user.email.replace(/\./g, '_');
+            const UserRef = child(dbRef, UserKey);
+            await remove(UserRef, user);
+            Authentication.logout();
+            console.log("Usuário removido com sucesso:", user);
+        } catch (error) {
+            console.error("Erro ao remover usuário:", error);
+            throw new Error("Não foi possível remover o usuário. Verifique sua conexão e as regras do Firebase.");
         }
     }
 }

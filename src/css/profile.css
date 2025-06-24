@@ -27,10 +27,25 @@
     margin-bottom: 20px;
 }
 
-#profile-page .editable {
-    display: inline-block;
-    min-width: 200px;
-    border-bottom: 1px dashed #aaa;
-    padding: 5px;
-    cursor: text;
+#profile-page form .form-input {
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+#profile-page form {
+    width: 55%;
+    text-align: left;
+}
+
+#profile-page form *{
+    gap: 15px;
+}
+
+#profile-page .flex-row label {
+    flex: 1;
+}
+
+#profile-page .flex-row .input {
+    justify-content: space-between;
+    flex: 4;
 }
