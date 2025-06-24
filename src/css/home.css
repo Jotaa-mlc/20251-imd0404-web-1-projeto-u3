@@ -2,6 +2,7 @@
     padding: 30px;
     margin: 0 auto;
     width: 100%;
+    flex: 1;
     background-color: #f4f4f4
 }
 
@@ -89,6 +90,35 @@
 
 .product-card:hover {
     transform: translateY(-5px);
+}
+
+#home-loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+#home-loading .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #ffa500;
+    border-radius: 50%;
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 600px) {

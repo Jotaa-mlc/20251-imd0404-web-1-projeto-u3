@@ -18,7 +18,7 @@ import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from 'rea
 function App() {
   return (
     <>
-      <Header isLogedin={true} user={{image:"", name: "João Artur"}}/>
+      <Header isLogedin={false} user={{image:"", name: "João Artur"}}/>
       
       <BrowserRouter>
         <Routes>

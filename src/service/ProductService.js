@@ -25,28 +25,6 @@ export default class ProductService {
             console.error("Erro ao buscar produtos do Realtime Database:", error);
             throw new Error("Não foi possível carregar os produtos. Verifique sua conexão e as regras do Firebase.");
         }
-    
-
-        // var productsList = [];
-        // try {
-        //     const response = await fetch(`${firebaseURL}products.json`);
-        //     if (!response.ok) {
-        //         throw new Error('Network response was not ok');
-        //     }
-        //     const data = await response.json();
-        //     if (data) {
-        //         var count = 0;
-        //         data.forEach(product => {
-        //             const newProduct = JSON.parse(JSON.stringify(product));
-        //             newProduct.id = count++;
-        //             productsList.push(newProduct);
-        //         });
-        //         return productsList;
-        //     }
-        //     return [];
-        // } catch (error) {
-        //     throw new Error('Error fetching products:', error);
-        // }
     }
 
     // static async addProduct(product) {

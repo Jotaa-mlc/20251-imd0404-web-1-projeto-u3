@@ -10,7 +10,7 @@ class Address {
     }
 }
 
-class User {
+export default class User {
     constructor(name, email, password, address, phoneNumber, profilePicture) {
         this.name = name;
         this.email = email;

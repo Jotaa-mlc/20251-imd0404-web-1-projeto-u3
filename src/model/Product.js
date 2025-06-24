@@ -11,6 +11,18 @@ class Product {
         this.condition = condition;
     }
 
+    static categorizeProducts(products) {
+      const categorized = {};
+      products.forEach(product => {
+        const category = product.category || 'outros';
+        if (!categorized[category]) {
+          categorized[category] = [];
+        }
+        categorized[category].push(product);
+      });
+      return categorized;
+    }
+
     static fromRTDB(id, data) {
         return new Product(
             id,
