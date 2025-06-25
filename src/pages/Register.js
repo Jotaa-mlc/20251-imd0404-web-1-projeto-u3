@@ -17,7 +17,7 @@ function Register() {
             return;
         }
 
-        const newUser = new User(name, email, password, "", "", "https://placehold.co/150x150/png?text=User+Image");
+        const newUser = new User(name, email, password, "", "", "", "https://placehold.co/150x150/png?text=User+Image");
         try {
             await UserService.addUser(newUser);
         } catch (error) {

@@ -14,7 +14,7 @@ export default class UserService {
             if (snapshot.exists()) {
                 console.log("Dados brutos do Realtime Database:", snapshot.val());
                 snapshot.forEach(childSnapshot => {
-                    const user = User.fromRTDB(childSnapshot.key, childSnapshot.val());
+                    const user = User.fromRTDB(childSnapshot.val());
                     users.push(user);
                 });
             } else {
@@ -38,7 +38,7 @@ export default class UserService {
                 console.log("Dados do usuário:", snapshot.val());
                 return User.fromRTDB(snapshot.val());
             } else {
-                console.log("Usuário não encontrado.");
+                console.log("Usuário não encontrado.", userKey);
                 return null;
             }
         } catch (error) {
@@ -50,7 +50,7 @@ export default class UserService {
     static async addUser(user) {
         try {
             const dbRef = ref(rtdb, 'users');
-            const newUserKey = user.email.replace(/\./g, '_');
+            const newUserKey = user.getId();
             const newUserRef = child(dbRef, newUserKey);
             await set(newUserRef, user);
             console.log("Usuário adicionado com sucesso:", user);
@@ -63,7 +63,7 @@ export default class UserService {
     static async updateUser(user) {
         try {
             const dbRef = ref(rtdb, 'users');
-            const UserKey = user.email.replace(/\./g, '_');
+            const UserKey = user.getId();
             const UserRef = child(dbRef, UserKey);
             await update(UserRef, user);
             Authentication.setLocalUser(user);
@@ -77,7 +77,7 @@ export default class UserService {
     static async deleteUser(user) {
         try {
             const dbRef = ref(rtdb, 'users');
-            const UserKey = user.email.replace(/\./g, '_');
+            const UserKey = user.getId();
             const UserRef = child(dbRef, UserKey);
             await remove(UserRef, user);
             Authentication.logout();

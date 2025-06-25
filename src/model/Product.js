@@ -23,9 +23,9 @@ class Product {
       return categorized;
     }
 
-    static fromRTDB(id, data) {
+    static fromRTDB(key, data) {
         return new Product(
-            id,
+            key,
             data.name,
             data.description,
             data.price,

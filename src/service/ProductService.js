@@ -1,6 +1,6 @@
 import Product from '../model/Product';
 import { rtdb } from '../firebase';
-import { ref, get, child } from 'firebase/database';
+import { ref, get, set, push, remove, child } from 'firebase/database';
 
 export default class ProductService {
 
@@ -10,7 +10,6 @@ export default class ProductService {
             const snapshot = await get(child(dbRef, 'products'));
             const products = [];
             if (snapshot.exists()) {
-                console.log("Dados brutos do Realtime Database:", snapshot.val());
                 snapshot.forEach(childSnapshot => {
                     const product = Product.fromRTDB(childSnapshot.key, childSnapshot.val());
                     products.push(product);
@@ -18,8 +17,7 @@ export default class ProductService {
             } else {
                 console.log("Nenhum produto encontrado no RTDB.");
             }
-            
-            console.log("Produtos carregados do Realtime Database (instâncias de Product):", products);
+            //console.log("Produtos carregados do RTDB (Product):", products);
             return products;
         } catch (error) {
             console.error("Erro ao buscar produtos do Realtime Database:", error);
@@ -27,53 +25,33 @@ export default class ProductService {
         }
     }
 
-    // static async addProduct(product) {
-    //     try {
-    //         const response = await fetch(`${firebaseURL}products.json`, {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(product)
-    //         });
-    //         if (!response.ok) {
-    //             throw new Error('Network response was not ok');
-    //         }
-    //         return await response.json();
-    //     } catch (error) {
-    //         console.error('Error adding product:', error);
-    //     }
-    // }
+    static async getProductById(productId) {
+       try {
+            const dbRef = ref(rtdb);
+            const snapshot = await get(child(dbRef, `products/${productId}`));
+            if (snapshot.exists()) {
+                console.log("Produto encontrado:", snapshot.val());
+                return Product.fromRTDB(snapshot.key, snapshot.val());
+            } else {
+                console.log("Produto não encontrado.");
+                return null;
+            }
+        } catch (error) {
+            console.error("Erro ao buscar produto:", error);
+            throw new Error("Não foi possível carregar o produto. Verifique sua conexão e as regras do Firebase.");
+        }
+    }
 
-    // static async updateProduct(id, product) {
-    //     try {
-    //         const response = await fetch(`${firebaseURL}products/${id}.json`, {
-    //             method: 'PUT',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(product)
-    //         });
-    //         if (!response.ok) {
-    //             throw new Error('Network response was not ok');
-    //         }
-    //         return await response.json();
-    //     } catch (error) {
-    //         console.error('Error updating product:', error);
-    //     }
-    // }
-
-    // static async deleteProduct(id) {
-    //     try {
-    //         const response = await fetch(`${firebaseURL}products/${id}.json`, {
-    //             method: 'DELETE'
-    //         });
-    //         if (!response.ok) {
-    //             throw new Error('Network response was not ok');
-    //         }
-    //         return await response.json();
-    //     } catch (error) {
-    //         console.error('Error deleting product:', error);
-    //     }
-    // }
+    static async addProduct(product) {
+       try {
+                const dbRef = ref(rtdb, 'products');
+                const productId = await push(dbRef, product);
+                
+                product.id = productId;
+                console.log("Produto adicionado com sucesso:", product);
+            } catch (error) {
+                console.error("Erro ao adicionar produto:", error);
+                throw new Error("Não foi possível adicionar o produto. Verifique sua conexão e as regras do Firebase.");
+            }
+    }
 }

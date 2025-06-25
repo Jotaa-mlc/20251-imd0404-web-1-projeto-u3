@@ -14,7 +14,7 @@ function Profile() {
         if (user) {
             console.log(user);
             setName(user.name);
-            setCEP(user.address);
+            setCEP(user.cep);
             setPhoneNumber(user.phoneNumber);
             setProfilePic(user.profilePicture);
         }
@@ -27,7 +27,7 @@ function Profile() {
     };
     const handleCepChange = (e) => {
         setCEP(e.target.value);
-        user.address = cep.replace(/\D/g, "");
+        user.cep = cep.replace(/\D/g, "");
         console.log(cep);
     };
     const handlePhoneNumberChange = (e) => {
@@ -43,13 +43,12 @@ function Profile() {
 
     const handleUpdateUser = async (event) => {
         const name = document.getElementById('user-name').value;
-        const cep = document.getElementById('user-cep').value.replace(/\D/g, "");;
+        const cep = document.getElementById('user-cep').value.replace(/\D/g, "");
         const phoneNumber = document.getElementById('user-phone').value.replace(/\D/g, "");
 
         user.name = name;
-        user.address = cep;
+        user.cep = cep;
         user.phoneNumber = phoneNumber;
-
         try {
             await UserService.updateUser(user);
         } catch (error) {
@@ -102,6 +101,8 @@ function Profile() {
                 enderecoValidado = `${data.logradouro}, ${data.bairro}, ${data.localidade} - ${data.uf}`;
                 msg.textContent = `Endereço: ${enderecoValidado}`;
                 msg.style.color = "green";
+
+                user.address = enderecoValidado;
             }
             })
             .catch(() => {

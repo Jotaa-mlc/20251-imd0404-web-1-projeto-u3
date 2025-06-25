@@ -1,12 +1,23 @@
 {
   "products": [
   {
+  "id": 0,
+  "name": "Computador Gamer",
+  "description": "I5 9400F RTX2070 16Gb DDR4@3200 240Gb SSD",
+  "price": 1500,
+  "category": "eletronicos",
+  "creatorId": "Admin",
+  "image": "https://placehold.co/150x150/png?text=PC+Gamer",
+  "quantity": 1,
+  "condition": "novo"
+  },
+  {
   "id": 1,
   "name": "Cadeira Gamer",
   "description": "Confortável e ergonômica",
   "price": 500,
   "category": "moveis",
-  "creator": "Admin",
+  "creatorId": "Admin",
   "image": "https://placehold.co/150x150/png?text=Cadeira+Gamer",
   "quantity": 1,
   "condition": "novo"
@@ -17,7 +28,7 @@
   "description": "4K, Smart TV com Netflix e YouTube",
   "price": 2000,
   "category": "eletronicos",
-  "creator": "Admin",
+  "creatorId": "Admin",
   "image": "https://placehold.co/150x150/png?text=Smart+TV",
   "quantity": 1,
   "condition": "novo"
@@ -28,7 +39,7 @@
   "description": "Tamanho 42, pouco usado",
   "price": 400,
   "category": "esportes",
-  "creator": "Admin",
+  "creatorId": "Admin",
   "image": "https://placehold.co/150x150/png?text=T%C3%AAnis+Nike",
   "quantity": 2,
   "condition": "novo"
@@ -39,7 +50,7 @@
   "description": "Edição atualizada, ideal para iniciantes",
   "price": 60,
   "category": "livros",
-  "creator": "Admin",
+  "creatorId": "Admin",
   "image": "https://placehold.co/150x150/png?text=Livro+JavaScript",
   "quantity": 5,
   "condition": "novo"
@@ -50,7 +61,7 @@
   "description": "Em bom estado, com alguns arranhões",
   "price": 800,
   "category": "eletronicos",
-  "creator": "Admin",
+  "creatorId": "Admin",
   "image": "https://placehold.co/150x150/png?text=Notebook",
   "quantity": 1,
   "condition": "usado"
@@ -61,7 +72,7 @@
   "description": "Madeira maciça, ótima para home office",
   "price": 300,
   "category": "moveis",
-  "creator": "Admin",
+  "creatorId": "Admin",
   "image": "https://placehold.co/150x150/png?text=Mesa",
   "quantity": 1,
   "condition": "usado"
@@ -72,7 +83,7 @@
   "description": "Tamanho G, estilo clássico",
   "price": 200,
   "category": "roupas",
-  "creator": "Admin",
+  "creatorId": "Admin",
   "image": "https://placehold.co/150x150/png?text=Jaqueta",
   "quantity": 2,
   "condition": "usado"
@@ -83,7 +94,7 @@
   "description": "Conteúdo atualizado, ideal para desenvolvedores",
   "price": 50,
   "category": "livros",
-  "creator": "Admin",
+  "creatorId": "Admin",
   "image": "https://placehold.co/150x150/png?text=Livro+Programação",
   "quantity": 3,
   "condition": "usado"
@@ -94,7 +105,7 @@
   "description": "Em bom estado, com pneus novos",
   "price": 400,
   "category": "esportes",
-  "creator": "Admin",
+  "creatorId": "Admin",
   "image": "https://placehold.co/150x150/png?text=Bicicleta",
   "quantity": 1,
   "condition": "usado"
@@ -105,7 +116,7 @@
   "description": "Modelo antigo, mas funcionando",
   "price": 250,
   "category": "eletronicos",
-  "creator": "Admin",
+  "creatorId": "Admin",
   "image": "https://placehold.co/150x150/png?text=Smartphone",
   "quantity": 1,
   "condition": "usado"
@@ -116,7 +127,7 @@
   "description": "Bem conservada",
   "price": 150,
   "category": "moveis",
-  "creator": "Admin",
+  "creatorId": "Admin",
   "image": "https://placehold.co/150x150/png?text=Cadeira",
   "quantity": 2,
   "condition": "usado"
@@ -127,7 +138,7 @@
   "description": "Tamanho M, pouco usada",
   "price": 40,
   "category": "roupas",
-  "creator": "Admin",
+  "creatorId": "Admin",
   "image": "https://placehold.co/150x150/png?text=Camisa",
   "quantity": 3,
   "condition": "usado"
@@ -138,7 +149,7 @@
   "description": "Leitura envolvente",
   "price": 30,
   "category": "livros",
-  "creator": "Admin",
+  "creatorId": "Admin",
   "image": "https://placehold.co/150x150/png?text=Livro",
   "quantity": 5,
   "condition": "usado"
@@ -149,7 +160,7 @@
   "description": "Quase novo",
   "price": 120,
   "category": "esportes",
-  "creator": "Admin",
+  "creatorId": "Admin",
   "image": "https://placehold.co/150x150/png?text=T%C3%AAnis",
   "quantity": 1,
   "condition": "usado"
@@ -160,7 +171,7 @@
   "description": "Bom estado",
   "price": 70,
   "category": "eletronicos",
-  "creator": "Admin",
+  "creatorId": "Admin",
   "image": "https://placehold.co/150x150/png?text=Fone",
   "quantity": 4,
   "condition": "usado"
@@ -169,10 +180,20 @@
 
   "users" : [
     {
+      "name":"Administrador",
+      "email": "admin@usados.com",
+      "phoneNumber":"84999999999",
+      "password":"123456",
+      "address":"",
+      "cep":"",
+      "profilePicture":"https://placehold.co/150x150/png?text=Teste1"
+    },
+    {
       "name":"Teste 1",
       "email": "teste1@mail.com",
       "phoneNumber":"",
       "password":"123",
+      "cep":"",
       "address":"",
       "profilePicture":"https://placehold.co/150x150/png?text=Teste1"
     },
@@ -181,6 +202,7 @@
       "email": "teste2@mail.com",
       "phoneNumber":"",
       "password":"456",
+      "cep":"",
       "address":"",
       "profilePicture":"https://placehold.co/150x150/png?text=Teste2"
     }

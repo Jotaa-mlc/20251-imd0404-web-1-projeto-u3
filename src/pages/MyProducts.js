@@ -21,18 +21,24 @@ function SideMenu() {
     );
 }
 
+
+
 function MyProducts() {
+    const handleAddProductClick = (event) => {
+
+    }
+
     return (
         <div id="my-products-page">
             <SideMenu />
             <div className="my-products-container">
                 <div class="sub-header">
                     <h2>Meus Produtos</h2>
-                    <a href="/new-product">
+                    <button onClick={handleAddProductClick}>
                         <div class="add-product">
                             <img src={addProductIcon} alt="Adicionar Produto"/>Produto
                         </div>
-                    </a>
+                    </button>
                 </div>
                 <div id="my-products-list">
                     {/* Lista de produtos será renderizada aqui */}
