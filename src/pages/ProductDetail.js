@@ -46,8 +46,7 @@ function ProductDetail() {
     }, [productId]);
 
     const handleAddToCart = async () => {
-        const user = Authentication.getLoggedUser();
-        if (!user) {
+        if (!Authentication.isAuthenticated()) {
             alert("Você precisa fazer login para adicionar produtos ao carrinho.");
             return;
         }

@@ -1,15 +1,15 @@
 import { rtdb } from '../firebase';
 import { ref, get, remove, runTransaction } from "firebase/database";
 import { Authentication } from './Authentication';
+import User from '../model/User';
 
 export default class CartService {
     static async addProductToCart(produto) {
-        const user = Authentication.getLoggedUser();
+        const user = User.fromRTDB(Authentication.getLoggedUser());
         if (!user) { throw new Error("Faça o login para adicionar itens ao carrinho."); }
         if (!produto || !produto.id) { throw new Error("Dados do produto inválidos."); }
 
-        const userId = user.email.replace(/\./g, '_');
-        const itemRef = ref(rtdb, `carts/${userId}/${produto.id}`);
+        const itemRef = ref(rtdb, `carts/${user.getId()}/${produto.id}`);
 
         try {
             await runTransaction(itemRef, (currentItemData) => {
@@ -31,14 +31,13 @@ export default class CartService {
     }
 
     static async getCartItems() {
-        const user = Authentication.getLoggedUser();
+        const user = User.fromRTDB(Authentication.getLoggedUser());
         if (!user) {
             console.log("Nenhum usuário logado para buscar o carrinho.");
             return [];
         }
 
-        const userId = user.email.replace(/\./g, '_');
-        const cartRef = ref(rtdb, `carts/${userId}`);
+        const cartRef = ref(rtdb, `carts/${user.getId()}`);
 
         try {
             const snapshot = await get(cartRef);
@@ -56,7 +55,7 @@ export default class CartService {
     }
 
     static async removeProductFromCart(productId) {
-        const user = Authentication.getLoggedUser();
+        const user = User.fromRTDB(Authentication.getLoggedUser());
         if (!user) {
             throw new Error("Usuário não está logado.");
         }
@@ -64,8 +63,7 @@ export default class CartService {
             throw new Error("ID do produto é inválido.");
         }
 
-        const userId = user.email.replace(/\./g, '_');
-        const itemRef = ref(rtdb, `carts/${userId}/${productId}`);
+        const itemRef = ref(rtdb, `carts/${user.getId()}/${productId}`);
 
         try {
             await remove(itemRef);
@@ -73,6 +71,19 @@ export default class CartService {
         } catch (error) {
             console.error("Erro ao remover item do carrinho:", error);
             throw new Error("Não foi possível remover o item do carrinho.");
+        }
+    }
+
+    static async removeCart() {
+        const user = User.fromRTDB(Authentication.getLoggedUser());
+        const cartRef = ref(rtdb, `carts/${user.getId()}`);
+
+        try {
+            await remove(cartRef);
+            console.log(`Carrinho do usuário ${user.name} foi excluido.`);
+        } catch (error) {
+            console.error("Erro ao excluir o carrinho:", error);
+            throw new Error("Não foi possível excluir o carrinho.");
         }
     }
 }

@@ -1,6 +1,8 @@
 import Product from '../model/Product';
 import { rtdb } from '../firebase';
 import { ref, get, set, push, remove, update, child } from 'firebase/database';
+import User from '../model/User';
+import { Authentication } from './Authentication';
 
 export default class ProductService {
 
@@ -55,16 +57,16 @@ export default class ProductService {
 
     static async addProduct(product) {
        try {
-                const dbRef = ref(rtdb, 'products');
-                const newProductRef = await push(dbRef, product);
-                await update(newProductRef, { id: newProductRef.key});
-                const productWithId = { ...product, id:  newProductRef.key};
-                console.log("Produto adicionado com sucesso:", productWithId);
-                return productWithId;
-            } catch (error) {
-                console.error("Erro ao adicionar produto:", error);
-                throw new Error("Não foi possível adicionar o produto. Verifique sua conexão e as regras do Firebase.");
-            }
+            const dbRef = ref(rtdb, 'products');
+            const newProductRef = await push(dbRef, product);
+            await update(newProductRef, { id: newProductRef.key});
+            const productWithId = { ...product, id:  newProductRef.key};
+            console.log("Produto adicionado com sucesso:", productWithId);
+            return productWithId;
+        } catch (error) {
+            console.error("Erro ao adicionar produto:", error);
+            throw new Error("Não foi possível adicionar o produto. Verifique sua conexão e as regras do Firebase.");
+        }
     }
 
     static async updateProduct(product) {
@@ -77,6 +79,25 @@ export default class ProductService {
         } catch (error) {
             console.error("Erro ao atualizar produto:", error);
             throw new Error("Não foi possível atualizar o produto. Verifique sua conexão e as regras do Firebase.");
+        }
+    }
+
+    static async removeProduct(productId) {
+        const user = User.fromRTDB(Authentication.getLoggedUser());
+        const product = await this.getProductById(productId);
+
+        if (!(product.creatorId === user.getId())) {
+            throw new Error("Você não tem permissão para excluir esse produto.");
+        }
+
+        try {
+            const dbRef = ref(rtdb, 'products');
+            const productRef = child(dbRef, product.id);
+            await remove(productRef, product);
+            console.log("Produto removido com sucesso.", product);
+        } catch (error) {
+            console.error("Erro ao excluir produto:", error);
+            throw new Error("Não foi possível excluir o produto. Verifique sua conexão e as regras do Firebase.");
         }
     }
 }

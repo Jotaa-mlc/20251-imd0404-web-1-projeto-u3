@@ -34,9 +34,10 @@ function logedIn() {
                 </button>
                 <ul className="dropdown-menu">
                     <li><a className="dropdown-item" onClick={() => window.location.href="/my-products"}>Meus Produtos</a></li>
+                    <li><a className="dropdown-item" onClick={() => window.location.href="/purchases"}>Minhas Compras</a></li>
                     <li><a className="dropdown-item" onClick={() => window.location.href="/profile"}>Meu Perfil</a></li>
                     <li><hr className="dropdown-divider"/></li>
-                    <li><a className="dropdown-item" href="#" id="logoutButtonHeader" onClick={handleLogout}>Sair</a></li>
+                    <li><a className="dropdown-item" id="logoutButtonHeader" onClick={handleLogout}>Sair</a></li>
                 </ul>
             </div>
             <a href="/cart" id="cartIconLink" alt="Carrinho" className="cart-icon" style={{ textDecoration: 'none', color: 'white' }}>

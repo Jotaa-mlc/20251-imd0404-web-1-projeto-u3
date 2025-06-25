@@ -7,8 +7,6 @@ import ProductService from '../service/ProductService';
 import OwnedProductCard from '../components/OwnedProductCard'
 import Loading from '../components/Loading';
 
-const user = User.fromRTDB(Authentication.getLoggedUser());
-
 function SideMenu() {
     return (
         <div className="side-menu">
@@ -32,6 +30,7 @@ function SideMenu() {
 
 
 function MyProducts() {
+    const user = User.fromRTDB(Authentication.getLoggedUser());
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -53,6 +52,15 @@ function MyProducts() {
         fetchProducts();
     }, []);
 
+    if (error) {
+        return <h1>Ocorreu um erro {error}</h1>;
+    }
+
+    const handleRemoveItem = (itemToRemove) => {
+        const updatedProducts = products.filter(item => item.id != itemToRemove);
+        setProducts(updatedProducts);
+    }
+
     return (
         <div id="my-products-page">
             <SideMenu />
@@ -67,7 +75,7 @@ function MyProducts() {
                 </div>
                 <div className="product-list">
                     {!loading ? products.map(product => (
-                        <OwnedProductCard key={product.id} product={product} />
+                        <OwnedProductCard key={product.id} product={product} handleRemoveItem={handleRemoveItem} />
                     )) : <Loading msg={"Carregando produtos..."}/>}
                 </div>
             </div>

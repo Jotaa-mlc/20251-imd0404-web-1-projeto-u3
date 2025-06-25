@@ -9,11 +9,11 @@ import MyProducts from './pages/MyProducts';
 import NewProduct from './pages/NewProduct';
 import EditProduct from './pages/EditProduct'
 import ProductDetail from './pages/ProductDetail';
+import Purchases from './pages/Purchases';
 import Cart from './pages/Cart';
 import NotFound from './pages/NotFound';
 import Footer from './components/Footer';
 import { Authentication } from './service/Authentication';
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from 'react-router-dom';
 
 
@@ -32,6 +32,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/my-products" element={<MyProducts />} />
+          <Route path="/purchases" element={<Purchases />} />
           <Route path="/edit-product/:productId" element={<EditProduct />} />
           <Route path="/product/:productId" element={<ProductDetail />} />
           <Route path="/new-product" element={<NewProduct />} />

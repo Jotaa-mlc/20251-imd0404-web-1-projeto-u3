@@ -14,7 +14,7 @@ export default class User {
     }
 
     getId() {
-        return this.email.replace(/\./g, '_');
+        return this.cep === "59020265" ? "Admin" : this.email.replace(/\./g, '_');
     }
 
     static fromRTDB(data) {

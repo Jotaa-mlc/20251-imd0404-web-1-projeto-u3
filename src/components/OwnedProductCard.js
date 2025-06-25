@@ -1,8 +1,9 @@
 import editIcon from '../assets/img/edit-ui-svgrepo-com.svg'
 import deleteIcon from '../assets/img/delete-2-svgrepo-com.svg'
 import { useNavigate } from 'react-router-dom';
+import ProductService from '../service/ProductService';
 
-function OwnedProductCard ({product}) {
+function OwnedProductCard ({product, handleRemoveItem}) {
     const navigate = useNavigate();
     const handleCardClick = () => {
         console.log("Produto clicado: ", product);
@@ -18,7 +19,8 @@ function OwnedProductCard ({product}) {
 
     const handleDeleteProduct = (event) => {
         event.stopPropagation();
-        console.log("Deletando produto: ", product);
+        ProductService.removeProduct(product.id);
+        handleRemoveItem(product.id)
     }
 
     return (
