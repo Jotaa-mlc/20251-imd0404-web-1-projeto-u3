@@ -5,17 +5,17 @@ import sellerLogo from './../assets/img/user-solid.svg'
 import phoneLogo from './../assets/img/phone-solid.svg'
 import locationLogo from './../assets/img/location-dot-solid.svg'
 import mapLogo from './../assets/img/map-solid.svg'
-import ProductService from '../service/ProductService'
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import ProductService from '../service/ProductService'
 import UserService from '../service/UserService'
+import Loading from '../components/Loading'
 
 
 function ProductDetail() {
     const { productId } = useParams();
     const [product, setProduct] = useState(null);
     const [seller, setSeller] = useState(null);
-    const [sellerAddress, setSellerAddress] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -50,10 +50,7 @@ function ProductDetail() {
     }, [productId]); // Re-busca se o ID do produto na URL mudar
 
     if (loading) return (
-        <div id="home-loading">
-          <h4>Carregando dados do produto...</h4>
-          <div className="loading-spinner"></div>
-        </div>
+        <Loading msg={"Carregando informações do produto"} />
     );
     if (error) return <div>{error}</div>;
     if (!product) return <div>Produto não encontrado.</div>;
@@ -65,7 +62,6 @@ function ProductDetail() {
                     <div className="fotos">
                         <img src={product.image} alt="imagem do produto" className="foto-anuncio"/>
                     </div>
-
                     <div className="descricao">
                         <h1 id='product-name'>{product.name}</h1>
                         <br/>
@@ -85,7 +81,6 @@ function ProductDetail() {
                             <span id="product-condition">{product.condition}</span>
                         </div>
                     </div>
-
                     <hr/>
                     
                     <div className="info-vendedor">
@@ -106,7 +101,6 @@ function ProductDetail() {
                             <p id="seller-cep" className="local">CEP - {seller.cep}</p>
                         </div>
                     </div>
-                    
                 </div>
 
                 <div className="card-preco">

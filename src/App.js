@@ -7,6 +7,7 @@ import Register from './pages/Register';
 import Profile from './pages/Profile';
 import MyProducts from './pages/MyProducts';
 import NewProduct from './pages/NewProduct';
+import EditProduct from './pages/EditProduct'
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
 import NotFound from './pages/NotFound';
@@ -31,6 +32,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/my-products" element={<MyProducts />} />
+          <Route path="/edit-product/:productId" element={<EditProduct />} />
           <Route path="/product/:productId" element={<ProductDetail />} />
           <Route path="/new-product" element={<NewProduct />} />
           <Route path="/cart" element={<Cart />} />

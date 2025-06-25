@@ -2,8 +2,11 @@ import './../css/register-login.css';
 import User from '../model/User';
 import UserService from '../service/UserService';
 import { Authentication } from '../service/Authentication';
+import { useNavigate } from 'react-router-dom';
+
 
 function Register() {
+    const navigate = useNavigate();
     const handleRegister = async (event) => {
         event.preventDefault(); // Impede o envio padrão do formulário
 
@@ -24,7 +27,7 @@ function Register() {
             alert(error);
         } finally {
             Authentication.setLocalUser(newUser);
-            window.location.href = "/";
+            navigate("/");
         }
     }
 

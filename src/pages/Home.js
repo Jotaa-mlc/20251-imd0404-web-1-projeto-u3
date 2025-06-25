@@ -2,8 +2,9 @@ import "./../css/home.css";
 import Product from "../model/Product";
 import ProductCard from "../components/ProductCard";
 import ProductService from "../service/ProductService";
+import Loading from "../components/Loading"
 import { renderToStaticMarkup } from "react-dom/server"
-import React, { useRef, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function HomeGreeting(products) {
 
@@ -96,10 +97,7 @@ function Home() {
     return (
       <>
         <HomeGreeting />
-        <div id="home-loading">
-          <h4>Carregando produtos...</h4>
-          <div className="loading-spinner"></div>
-        </div>
+        <Loading msg={"Carregando produtos..."}/>
       </>
     );
   }

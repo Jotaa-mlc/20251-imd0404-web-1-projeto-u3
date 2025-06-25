@@ -1,7 +1,9 @@
 import { Authentication } from '../service/Authentication';
+import { useNavigate } from 'react-router-dom';
 import './../css/register-login.css';
 
 function Login() {
+    const navigate = useNavigate();
     const handleLogin = async (event) => {
         event.preventDefault();
 
@@ -16,7 +18,7 @@ function Login() {
         } finally {
             console.log("Login ok: ", user);
             Authentication.setLocalUser(user);
-            window.location.href = "/";
+            navigate("/");
         }
     }
 

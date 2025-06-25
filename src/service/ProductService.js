@@ -42,6 +42,17 @@ export default class ProductService {
         }
     }
 
+    static async getProductsByOwnerId(ownerId) {
+        let productsOwned = [];
+        try {
+            productsOwned = (await this.getAllProducts()).filter(product => (product.creatorId === ownerId));
+            return productsOwned;
+        } catch (error) {
+            console.error("Erro ao buscar produtos do usuário:", error);
+            throw new Error("Não foi possível carregar o produto. Verifique sua conexão e as regras do Firebase.");
+        }
+    }
+
     static async addProduct(product) {
        try {
                 const dbRef = ref(rtdb, 'products');
@@ -58,6 +69,7 @@ export default class ProductService {
 
     static async updateProduct(product) {
         try {
+            console.log("Atualizando produto:", product);
             const dbRef = ref(rtdb, 'products');
             const productRef = child(dbRef, product.id);
             await update(productRef, product);

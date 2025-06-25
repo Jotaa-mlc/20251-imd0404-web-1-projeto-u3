@@ -70,6 +70,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 0px;
+    margin-bottom: 10px;
     border-bottom: solid 1px #CFD4DD;
 }
 
@@ -96,6 +97,20 @@
 #my-products-page .add-product {
     display: flex;
     align-items: center;
+}
+
+#my-products-page .product-image {
+    width: 250px;
+}
+
+.product-detail img {
+    width: 20px;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+
+.product-detail img:hover {
+    box-shadow: 0 0 0 2px #D68500;
 }
 
 @media screen and (max-width: 768px) {

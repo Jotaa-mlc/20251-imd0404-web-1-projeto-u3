@@ -28,11 +28,11 @@ class Product {
             key,
             data.name,
             data.description,
-            data.price,
+            parseFloat(data.price),
             data.category,
             data.creatorId,
             data.image,
-            data.quantity,
+            parseInt(data.quantity),
             data.condition
         );
     }

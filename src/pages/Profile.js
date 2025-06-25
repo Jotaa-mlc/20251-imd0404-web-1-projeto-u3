@@ -1,10 +1,13 @@
 import './../css/profile.css';
 import { Authentication } from '../service/Authentication';
-import React, { useState, useEffect, use } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import UserService from '../service/UserService';
 import User from '../model/User';
 
+
 function Profile() {
+    const navigate = useNavigate();
     const user = User.fromRTDB(Authentication.getLoggedUser());
     const [name, setName] = useState('');
     const [cep, setCEP] = useState('');
@@ -24,22 +27,18 @@ function Profile() {
     const handleNameChange = (e) => {
         setName(e.target.value);
         user.name = name;
-        console.log(name);
     };
     const handleCepChange = (e) => {
         setCEP(e.target.value);
         user.cep = cep.replace(/\D/g, "");
-        console.log(cep);
     };
     const handlePhoneNumberChange = (e) => {
         setPhoneNumber(e.target.value);
         user.phoneNumber = phoneNumber;
-        console.log(phoneNumber);
     };
     const handleProfilePicCHange = (e) => {
         setProfilePic(e.target.result)
         user.profilePicture = profilePic;
-        console.log(profilePic);
     };
 
     const handleUpdateUser = async (event) => {
@@ -66,7 +65,7 @@ function Profile() {
             alert(error);
         } finally {
             alert("Usuário removido com sucesso.");
-            window.location.href = "/";
+            navigate("/");
         }
     }
     

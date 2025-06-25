@@ -1,8 +1,4 @@
-import { useNavigate } from 'react-router-dom';
-
 function ProductCard({product}) {
-  const navigate = useNavigate(); 
-
   if (!product) {
     return null;
   }
