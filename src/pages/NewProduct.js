@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 function NewProduct() {
     const navigate = useNavigate();
+
     const handleNewProductSubmit = async (formData) => {
         const creator = User.fromRTDB(Authentication.getLoggedUser());
         const creatorId = creator.getId();
@@ -24,7 +25,7 @@ function NewProduct() {
     }
 
     return (
-        <ProductForm handleSubmit={handleNewProductSubmit}/>
+        <ProductForm onSubmitForm={handleNewProductSubmit}/>
     );
 }
 

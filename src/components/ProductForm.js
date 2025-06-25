@@ -61,7 +61,8 @@ function ProductForm({productToEdit, onSubmitForm}) {
         const imageBase64 = await getImageBase64(imageFile);
         const productImage = imageBase64 ? imageBase64 : "https://placehold.co/300x300/png?text=" + name.replace(" ", "+");
 
-        const productId = productToEdit.id ? productToEdit.id : "";
+        let productId = "";
+        if (productToEdit) productId = productToEdit.id;
 
         const product = new Product(productId, name, description, price, category, "", productImage, quantity, condition);
 
