@@ -14,7 +14,7 @@ function notLogedIn() {
 function logedIn() {
     const handleLogout = (event) => {
         Authentication.logout();
-        window.location.href = "";
+        window.location.href = "/";
     }
 
     let userName = Authentication.getLoggedUser().name;

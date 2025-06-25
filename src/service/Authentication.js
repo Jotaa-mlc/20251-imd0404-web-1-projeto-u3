@@ -12,7 +12,7 @@ export class Authentication {
         } else if (!user.authenticate(password)) {
             throw new Error("Senha incorreta.");
         } else {
-            localStorage.setItem("loggedUser", JSON.stringify(user));
+            this.setLocalUser(user);
             return user;
         }
     }

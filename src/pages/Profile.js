@@ -24,6 +24,14 @@ function Profile() {
         }
     }, []);
 
+    const getImageBase64 = file => new Promise((resolve, reject) => {
+        if (!file) return resolve("");
+        const reader = new FileReader();
+        reader.onload = e => resolve(e.target.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+    });
+
     const handleNameChange = (e) => {
         setName(e.target.value);
         user.name = name;
@@ -46,9 +54,14 @@ function Profile() {
         const cep = document.getElementById('user-cep').value.replace(/\D/g, "");
         const phoneNumber = document.getElementById('user-phone').value.replace(/\D/g, "");
 
+        const imageFile = document.getElementById("new-image").files[0];
+        const imageBase64 = await getImageBase64(imageFile);
+        const profilePicture = imageBase64 ? imageBase64 : "https://placehold.co/300x300/png?text=" +user.name.replace(" ", "+");
+
         user.name = name;
         user.cep = cep;
         user.phoneNumber = phoneNumber;
+        user.profilePicture = profilePicture;
         try {
             await UserService.updateUser(user);
         } catch (error) {

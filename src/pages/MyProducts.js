@@ -7,28 +7,6 @@ import ProductService from '../service/ProductService';
 import OwnedProductCard from '../components/OwnedProductCard'
 import Loading from '../components/Loading';
 
-function SideMenu() {
-    return (
-        <div className="side-menu">
-            <h2>Menu</h2>
-            <ul>
-                <li><a onClick={() => window.location.href="/"}>Página Inicial</a></li>
-                <li><a onClick={() => window.location.href="/my-products"}>Meus Produtos</a></li>
-                <li><a onClick={() => window.location.href="/profile"}>Perfil</a></li>
-                <li><a href="#">Loja</a></li>
-                <li><a href="#">Mensagens</a></li>
-                <li><a href="#">Notificações</a></li>
-                <li><a href="#">Meus Pedidos</a></li>
-                <li><a href="#">Minhas Vendas</a></li>
-                <li><a href="#">Configurações</a></li>
-                <li><a onClick={() => {Authentication.logout(); window.location.href="/"}}>Sair</a></li>
-            </ul>
-        </div>
-    );
-}
-
-
-
 function MyProducts() {
     const user = User.fromRTDB(Authentication.getLoggedUser());
     const [products, setProducts] = useState([]);
@@ -63,7 +41,6 @@ function MyProducts() {
 
     return (
         <div id="my-products-page">
-            <SideMenu />
             <div className="my-products-container">
                 <div className="sub-header">
                     <h2>Meus Produtos</h2>

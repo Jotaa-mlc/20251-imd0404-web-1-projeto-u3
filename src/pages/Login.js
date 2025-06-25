@@ -17,7 +17,6 @@ function Login() {
             alert(error);
         } finally {
             console.log("Login ok: ", user);
-            Authentication.setLocalUser(user);
             navigate("/");
         }
     }
