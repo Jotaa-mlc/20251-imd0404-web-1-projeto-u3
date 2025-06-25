@@ -1,6 +1,6 @@
 import Product from '../model/Product';
 import { rtdb } from '../firebase';
-import { ref, get, set, push, remove, child } from 'firebase/database';
+import { ref, get, set, push, remove, update, child } from 'firebase/database';
 
 export default class ProductService {
 
@@ -45,13 +45,26 @@ export default class ProductService {
     static async addProduct(product) {
        try {
                 const dbRef = ref(rtdb, 'products');
-                const productId = await push(dbRef, product);
-                
-                product.id = productId;
-                console.log("Produto adicionado com sucesso:", product);
+                const newProductRef = await push(dbRef, product);
+                await update(newProductRef, { id: newProductRef.key});
+                const productWithId = { ...product, id:  newProductRef.key};
+                console.log("Produto adicionado com sucesso:", productWithId);
+                return productWithId;
             } catch (error) {
                 console.error("Erro ao adicionar produto:", error);
                 throw new Error("Não foi possível adicionar o produto. Verifique sua conexão e as regras do Firebase.");
             }
+    }
+
+    static async updateProduct(product) {
+        try {
+            const dbRef = ref(rtdb, 'products');
+            const productRef = child(dbRef, product.id);
+            await update(productRef, product);
+            console.log("Produto atualizado com sucesso:", product);
+        } catch (error) {
+            console.error("Erro ao atualizar produto:", error);
+            throw new Error("Não foi possível atualizar o produto. Verifique sua conexão e as regras do Firebase.");
+        }
     }
 }

@@ -3,7 +3,7 @@ import addProductIcon from './../assets/img/add-circle-svgrepo-com.svg';
 
 function SideMenu() {
     return (
-        <div class="side-menu">
+        <div className="side-menu">
             <h2>Menu</h2>
             <ul>
                 <li><a href="/">Página Inicial</a></li>
@@ -24,18 +24,14 @@ function SideMenu() {
 
 
 function MyProducts() {
-    const handleAddProductClick = (event) => {
-
-    }
-
     return (
         <div id="my-products-page">
             <SideMenu />
             <div className="my-products-container">
-                <div class="sub-header">
+                <div className="sub-header">
                     <h2>Meus Produtos</h2>
-                    <button onClick={handleAddProductClick}>
-                        <div class="add-product">
+                    <button onClick={() => window.location.href="/new-product"}>
+                        <div className="add-product">
                             <img src={addProductIcon} alt="Adicionar Produto"/>Produto
                         </div>
                     </button>

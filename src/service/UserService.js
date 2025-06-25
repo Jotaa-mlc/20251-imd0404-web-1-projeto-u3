@@ -3,8 +3,6 @@ import { rtdb } from '../firebase';
 import { ref, get, set, child, update, remove } from 'firebase/database';
 import { Authentication } from './Authentication';
 
-
-
 export default class UserService {
     static async getAllUsers() {
         try {

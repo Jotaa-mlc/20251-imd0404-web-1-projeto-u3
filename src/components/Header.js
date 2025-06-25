@@ -33,8 +33,8 @@ function logedIn() {
                     </svg>
                 </button>
                 <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="my-products">Meus Produtos</a></li>
-                    <li><a className="dropdown-item" href="profile">Meu Perfil</a></li>
+                    <li><a className="dropdown-item" onClick={() => window.location.href="/my-products"}>Meus Produtos</a></li>
+                    <li><a className="dropdown-item" onClick={() => window.location.href="/profile"}>Meu Perfil</a></li>
                     <li><hr className="dropdown-divider"/></li>
                     <li><a className="dropdown-item" href="#" id="logoutButtonHeader" onClick={handleLogout}>Sair</a></li>
                 </ul>

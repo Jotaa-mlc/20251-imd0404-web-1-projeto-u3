@@ -2,9 +2,10 @@ import './../css/profile.css';
 import { Authentication } from '../service/Authentication';
 import React, { useState, useEffect, use } from 'react';
 import UserService from '../service/UserService';
+import User from '../model/User';
 
 function Profile() {
-    const user = Authentication.getLoggedUser();
+    const user = User.fromRTDB(Authentication.getLoggedUser());
     const [name, setName] = useState('');
     const [cep, setCEP] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -72,7 +73,6 @@ function Profile() {
     const handleValidarCEP = async (event) => {
         event.preventDefault();
         
-
         const cepInput = document.getElementById("user-cep");
         const msg = document.getElementById("address-validation-msg");
         let clearCep = cepInput.value.replace(/\D/g, "");

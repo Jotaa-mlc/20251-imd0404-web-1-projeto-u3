@@ -5,6 +5,16 @@ import { Authentication } from '../service/Authentication';
 import ProductService from '../service/ProductService';
 
 function NewProduct() {
+    const getImageBase64 = file => new Promise((resolve, reject) => {
+        if (!file) return resolve("");
+        const reader = new FileReader();
+        reader.onload = e => resolve(e.target.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+
+      
+
     const handleNewProductSubmit = async (event) => {
         event.preventDefault();
 
@@ -14,13 +24,15 @@ function NewProduct() {
         const quantity = document.getElementById("product-quantity").value;
         const category = document.getElementById("product-category").value;
         const condition = document.getElementById("product-condition").value;
-        const image = document.getElementById("product-image").value;
+        const imageFile = document.getElementById("product-image").files[0];
+        
+        const imageBase64 = await getImageBase64(imageFile);
 
         const creator = User.fromRTDB(Authentication.getLoggedUser());
         console.log(creator);
         const creatorId = creator.getId();
 
-        const product = new Product("", name, description, price, category, creatorId, image, quantity, condition);
+        const product = new Product("", name, description, price, category, creatorId, imageBase64, quantity, condition);
 
         try{
             await ProductService.addProduct(product);
@@ -28,8 +40,8 @@ function NewProduct() {
             alert(error);
         } finally {
             alert("Produto cadastrado com sucesso.", product);
+            //window.location.href="/my-products";
         }
-
     }
 
     return (
